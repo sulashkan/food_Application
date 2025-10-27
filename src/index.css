@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+.cl3{
+  @apply flex flex-col justify-evenly items-center h-[220px] w-[500px] border-[rgb(51,163,255)]
+  shadow-[1px_0px_10px_10px_rgb(198,_229,_255)]
+}
