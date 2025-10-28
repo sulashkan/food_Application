@@ -1,0 +1,25 @@
+/* import tailwind css to applay dynamically  */
+
+@import "tailwindcss";    
+
+.content {
+  min-height: 80vh;
+  background-color: rgb(240, 240, 240);
+}
+
+.position-relative{
+  position: relative;
+}
+
+.position-absolute{
+  position: absolute;
+  right:0;
+  bottom:0
+}
+/* input:hover , input:active{
+  outline: none;
+} */
+
+input{
+  outline: none;
+}
