@@ -1,19 +1,22 @@
 import React from "react";
 
-export function Validator({email,password}){
+export function Validator({ email, password }) {
 
-    if(!RegExp.test){
-        return "email is invalid"
+    const emailpattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    if (!emailpattern.test(email)) {
+        return "Invalid email format"
     }
 
 
-    if(!passwordRegex.test(password)){
+    if (!passwordRegex.test(password)) {
 
-return "password is invalid"
+        return "Invalid password"
 
 
     }
 
-    return null
+    return true
 
 }
