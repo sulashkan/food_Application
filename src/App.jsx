@@ -13,25 +13,21 @@ import { validator } from './utility/validator';
 
 function App() {
 
-//TODO: shold be one state
+
     const [isLogin , setIsLogin] = useState(true);
     const [eye , setEye] = useState(true);
     const [message , setMessage] = useState("");
+    
     const [formData , setFormData] = useState({
       email:"",
-      password:""
+      password:"",
+      name:""
     })
     const [user , setUser] = useState(null);
     const [showLogin , setShowLogin] = useState(true);
 
-
-    //helper function for this
-
-    //  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    //  const emailRegix =   /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-
     const auth = getAuth(app);
-//TODO: aSYC N AWAIT
+
     const Authentication = async () => {
 
     const { email, password } = formData;
@@ -40,14 +36,16 @@ function App() {
     if(isValid){
      setMessage( isValid.message)
       return ;
-      
     }
 
     if(!isLogin){
       try{
        await createUserWithEmailAndPassword(auth,formData.email,formData.password)
+       
        alert("SignUp succesfull");
        setFormData({password:"" , email:""})
+       setShowLogin(!showLogin)
+       setUser("user")
        setIsLogin(!isLogin);
       }
       catch(err){
@@ -83,9 +81,10 @@ function App() {
 
 const handleChange = (e) => {
   const {name , value} = e.target;
-
+   
   setFormData({...formData , [name] : value});
 }
+
 
 const logout = () => {
   setShowLogin(!showLogin);
@@ -99,6 +98,8 @@ const logout = () => {
           <h1 className='ml-15 text-3xl font-bold mb-2'>{isLogin ? 'Login' : 'Signup'} Form</h1>
 
           <form onSubmit={(e) => e.preventDefault()} style={{display:"flex", width:"300px" , flexDirection:"column", gap:"10px"}}>
+            {/* <input type="text" placeholder='name' value={formData.name} name="name" onChange={handleChange}></input> */}
+           
             <input type="text" name="email" placeholder='email' value={formData.email} onChange={handleChange} className='border p-2.5 border-r-4 ' ></input>
             <div  className='flex border p-2.5 border-r-4 '>
               <input type={eye ? "password" : "text"} name="password" placeholder='password' value={formData.password} onChange={handleChange} className='border-none'></input>
@@ -116,9 +117,9 @@ const logout = () => {
             {isLogin ? 'Signup' : 'Login'  }
         </button>
           </div>      
-        </div> :
-
-       <div>
+        </div> 
+        :
+        <div>
         
         {user === "user" ?   <User logout={logout}/> : <Admin logout={logout}/> } 
        </div> 
