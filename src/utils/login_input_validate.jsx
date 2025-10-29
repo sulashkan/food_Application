@@ -8,13 +8,14 @@ const validateLoginInput = (email , password ) =>{
  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/; 
 
     if(!emailRegex.test(email)){
-    errors.email = "Invalid Email Address Enter valid Email"
+    errors.email = "Invalid Email Address Enter valid Email *"
  };
  
       if(!passwordRegex.test(password)){
-    errors.email = "Password must be at least 8 characters long and contain at least one letter and one number";
+    errors.password = "Password must be at least 8 characters long and contain at least one letter and one number *";
  }
 
+ return errors;
 }
 
 export default validateLoginInput;

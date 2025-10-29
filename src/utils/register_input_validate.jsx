@@ -11,26 +11,26 @@ const register_input_validate = (fname , email ,contact ,  gender , password) =>
 //   Now validating the feilds - 
 
    if (!fname || fname.trim().length < 2) {
-    errors.fname = "Full name must be at least 2 characters long";
+    errors.fname = "Full name must be at least 2 characters long *";
   } 
 
  if(!emailRegex.test(email)){
-    errors.email = "Invalid Email Address Enter valid Email"
+    errors.email = "Invalid Email Address Enter valid Email *"
  };
-
+ console.log(contact)
   if(!contactRegex.test(contact)){
-    errors.email = "Invalid Email Address Enter valid Email"
+    errors.contact = "Invalid Number  Enter valid Number *"
  };
-
-
 
   if (!["male", "female", "other"].includes(gender.toLowerCase())) {
-    errors.gender = "Invalid gender";
+    errors.gender = "Invalid gender *";
   }
 
   if(!passwordRegex.test(password)){
-    errors.email = "Password must be at least 8 characters long and contain at least one letter and one number";
+    errors.password = "Password must be at least 8 characters long and contain at least one letter and one number *";
  }
+
+ return errors;
 
 };
 

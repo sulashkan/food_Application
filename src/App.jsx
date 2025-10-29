@@ -1,17 +1,13 @@
-import { useState } from 'react'
-import SignUp from './Components/auth/signup/signUp'
-import Routing from './router/Routing'
+import Routing from "./router/Routing";
+import Footer from "./Components/footer/Footer";
 
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-<>
-<Routing />
-</>
-
-  )
+    <>
+        <Routing />
+    </>
+  );
 }
 
-export default App
+export default App;

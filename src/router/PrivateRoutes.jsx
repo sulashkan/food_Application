@@ -1,13 +1,10 @@
-import React, { Children, useEffect } from 'react'
+// import React, { Children, useEffect } from 'react'
 import { Navigate, Outlet } from 'react-router-dom';
+import Layout from '../Components/dashbord/Layout/Layout';
 
-const PrivateRoutes = ({Children , isLogin}) => {
-  
-      const isAuth =   isLogin?.length ? true : false;
-
-      console.log(isAuth)
+const PrivateRoutes = ({ isLogin}) => {
    
-  return  isAuth? <Outlet /> : <Navigate to="/login" />
+  return  isLogin?.length ? <Layout />: <Navigate to="/form" replace/>
 }
 
 export default PrivateRoutes;
