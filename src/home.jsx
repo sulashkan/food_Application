@@ -4,6 +4,9 @@ import { app } from "./firebase";
 import Admin from "./Admin";
 import User from "./User";
 import { Validator } from "./validatore";
+import { useNavigate } from "react-router-dom";
+import { FaEye , FaEyeSlash } from "react-icons/fa";
+
 
 const auth = getAuth(app);
 
@@ -17,6 +20,7 @@ function Home() {
         email: "",
         password: ""
     })
+    const navigate = useNavigate()
     const [show, setShow] = useState(true);
     const [showLogin, setShowLogin] = useState(true);
     const [showRegister, setShowRegister] = useState(false); //TODO: spelling is incorrect mistake
@@ -57,14 +61,15 @@ function Home() {
         }
         if (formData.email === "admin@gmail.com" && formData.password === "Admin@123") {
             setUseRole("admin")
-            setShowLogin(false);
+            navigate("/admin")
         }
         else (
             signInWithEmailAndPassword(auth, formData.email, formData.password)
                 .then(() => {
                     setUseRole("user"),
                         alert("logged in"),
-                        setShowLogin(false)
+                        // setShowLogin(false)
+                        navigate("/User")
                 })
                 .catch((error) => {
                     console.error("Error code:", error.code);
@@ -120,7 +125,7 @@ function Home() {
                             <label className="text-[23px] font-serif" >Password</label>
                             <input type={show ? "password" : "text"} name="password" value={formData.password} className="text-center h-[30px] w-[300px] border-solid border-[1.5px] border-gray-300 absolute ml-[100px]" placeholder="Enter You Password" onChange={hanldleinput} required
                             />
-                            <button type="button" className="relative mr-[10px]" onClick={HandleShow}>{show ? "Show" : "Hide"} </button>
+                            <button type="button" className="relative mr-[10px]" onClick={HandleShow}>{show ? <FaEye /> : <FaEyeSlash/>} </button>
                         </div>
                          {error && <span className="text-red-500">{error}</span>}
                         <button type="button" onClick={singinUser} className="h-[45px] w-20 text-[20px] text-white bg-blue-500 rounded-[25px] cursor-pointer" >Login</button>
@@ -142,7 +147,7 @@ function Home() {
                         <div className="flex justify-between w-[400px] items-center">
                             <label className="text-[23px] font-serif" >Password</label>
                             <input type={show ? "password" : "text"} name="password" value={formData.password} className="text-center h-[30px] w-[300px] border-solid border-[1.5px] border-gray-300 absolute ml-[100px]" placeholder="Enter You Password " onChange={hanldleinput} required />
-                            <button type="button" className="relative mr-[10px]" onClick={HandleShow}>{show ? "Show" : "Hide"} </button>
+                            <button type="button" className="relative mr-[10px]" onClick={HandleShow}>{show ? <FaEye /> : <FaEyeSlash/>} </button>
                         </div>
                         {error && <span className="text-red-500">{error}</span>}
 
@@ -152,9 +157,9 @@ function Home() {
                     <p onClick={handleClick} className="text-blue-600 hover:underline mt-6 cursor-pointer">already have an account?Sing-in</p>
                 </div>
             )}
-
-            {userRole === "admin" && <Admin logout={handleLogout} />}
-            {userRole === "user" && <User logout={handleLogout} />}
+{/* 
+          //  {userRole === "admin" && <Admin logout={handleLogout} />}
+            {userRole === "user" && <User logout={handleLogout} />} */}
 
         </>
     )
