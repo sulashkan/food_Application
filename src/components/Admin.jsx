@@ -1,14 +1,23 @@
-import React from 'react'
+import React from "react";
+import { Dashboard } from "./Dashboard";
+import { Sidebar } from "./Sidebar";
+import { Navbar } from "./Navbar";
+import { Footer } from "./Footer";
+import { Outlet } from "react-router-dom";
 
-const Admin = ({logout}) => {
+const Admin = ({ logout }) => {
   return (
-     <div className='flex ' >
-        <h1 className='font-bold'> Admin logged In</h1>
-        <button onClick={logout} className='border bg-black text-white p-2 border-none'>
-            Log Out  
-        </button>
+    <div>
+      <Navbar logout={logout} />
+      <div className="flex  bg-blue-300 min-h-130 ">
+        <div className="w-[20%]  bg-red-300">
+          <Sidebar />
+        </div>
+        <Outlet />
+      </div>
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Admin
+export default Admin;
