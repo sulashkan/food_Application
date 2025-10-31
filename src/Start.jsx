@@ -12,7 +12,7 @@ function Start() {
                 <div className="flex-shrink-0">
                     <HomeNav />
                 </div>
-                 <div className="flex-shrink-0 " >
+                 <div className="flex-shrink-0 " style={{ backgroundImage: `url(${netfllix})` }}>
                     <Home/>
                 </div>
                  <div className="flex-shrink-0">
