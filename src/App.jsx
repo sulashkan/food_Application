@@ -1,13 +1,8 @@
 import Routing from "./router/Routing";
-import Footer from "./Components/footer/Footer";
-
 
 function App() {
-  return (
-    <>
-        <Routing />
-    </>
-  );
+  return <Routing />;
+   
 }
 
 export default App;

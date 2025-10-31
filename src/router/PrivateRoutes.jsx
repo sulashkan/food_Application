@@ -1,6 +1,5 @@
-// import React, { Children, useEffect } from 'react'
-import { Navigate, Outlet } from 'react-router-dom';
-import Layout from '../Components/dashbord/Layout/Layout';
+import { Navigate} from 'react-router-dom';
+import Layout from '../components/dashbord/layout/Layout';
 
 const PrivateRoutes = ({ isLogin}) => {
    

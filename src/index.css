@@ -1,6 +1,6 @@
 /* import tailwind css to applay dynamically  */
 
-@import "tailwindcss";    
+@import "tailwindcss"; 
 
 .content {
   min-height: 80vh;
@@ -24,6 +24,31 @@ input{
   outline: none;
 }
 
+input:active{
+  background-color: transparent;
+}
 button{
   cursor: pointer;
+  border:none;
+}
+
+.pagination-layout li{
+  padding:1px 2px !important;
+  border-radius: 1px !important;
+  background-color: rgb(47, 146, 47) !important;
+  color:white !important;
+
+} 
+
+/* Universal  */ 
+/* For Chrome, Safari, Edge, and Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+    --moz-appearance: textfield;
 }
