@@ -5,7 +5,8 @@ import Admin from "./Admin";
 import User from "./User";
 import { Validator } from "./validatore";
 import { useNavigate } from "react-router-dom";
-import { FaEye , FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import HomeNav from "./Components/HomeNav";
 
 
 const auth = getAuth(app);
@@ -42,7 +43,7 @@ function Home() {
         await createUserWithEmailAndPassword(auth, formData.email, formData.password);
         alert("Successfully Registered!!");
         setUseRole("user");
-        setShowRegister(false); 
+        setShowRegister(false);
     }
 
 
@@ -111,55 +112,109 @@ function Home() {
     return (
 
         <>
+
             {showLogin && (
 
-                <div className="flex flex-col h-screen w-full justify-center items-center" >
+               
+                <div className="flex flex-col h-[85.2vh] w-full justify-center items-center" >
                     <h1 className="text-[60px] mb-5">Login</h1>
                     <form className="cl3">
-                        <div className="flex w-[400px] justify-between items-center">
+                        
+                        <div className="flex justify-between w-[400px] items-center">
                             <label className="text-[23px] font-serif">Email</label>
-                            <input type="email" name="email" value={formData.email} className="text-center h-[30px] w-[300px] border-solid border-[1.5px] border-gray-300 " placeholder="Enter You Email" onChange={hanldleinput} required />
+                            <input type="email" 
+                            name="email" 
+                            value={formData.email} 
+                            className="text-center h-[30px] w-[300px] border-solid border-[1.5px] border-gray-300 " 
+                            placeholder="Enter You Email" 
+                            onChange={hanldleinput} required />
 
                         </div>
-                        <div className="flex w-[400px] justify-between items-center">
+
+                        <div className="flex justify-between w-[400px] items-center">
                             <label className="text-[23px] font-serif" >Password</label>
-                            <input type={show ? "password" : "text"} name="password" value={formData.password} className="text-center h-[30px] w-[300px] border-solid border-[1.5px] border-gray-300 absolute ml-[100px]" placeholder="Enter You Password" onChange={hanldleinput} required
-                            />
-                            <button type="button" className="relative mr-[10px]" onClick={HandleShow}>{show ? <FaEye /> : <FaEyeSlash/>} </button>
+                            <input 
+                            type={show ? "password" : "text"} 
+                            name="password" 
+                            value={formData.password} 
+                            className="text-center h-[30px] w-[300px] border-solid border-[1.5px] border-gray-300 absolute ml-[100px]" placeholder="Enter You Password " 
+                            onChange={hanldleinput} required />
+                            
+                            <button 
+                            type="button" 
+                            className="relative mr-[10px]" 
+                            onClick={HandleShow}>
+                                {show ? <FaEye /> : <FaEyeSlash />} 
+                            </button>
                         </div>
-                         {error && <span className="text-red-500">{error}</span>}
-                        <button type="button" onClick={singinUser} className="h-[45px] w-20 text-[20px] text-white bg-blue-500 rounded-[25px] cursor-pointer" >Login</button>
+
+                        {error && <span className="text-red-500">{error}</span>}
+
+                        <button 
+                            type="button" 
+                            onClick={singinUser} 
+                            className="h-[45px] w-[100px] text-[20px] text-white bg-blue-500 rounded-[25px] cursor-pointer" >
+                                Register
+                        </button>
                     </form>
-                    <p onClick={handleClick} className="text-blue-600 hover:underline mt-6 cursor-pointer">dont't have any account?Sing-up</p>
+
+                    <p onClick={handleClick} 
+                    className="text-blue-600 hover:underline mt-6 cursor-pointer">
+                        already have an account?Sing-in
+                    </p>
                 </div>
             )}
 
             {showRegister && (
 
-                <div className="flex flex-col h-screen w-full justify-center items-center" >
+                <div className="flex flex-col h-[85.2vh] w-full justify-center items-center" >
                     <h1 className="text-[60px] mb-5">Registration</h1>
                     <form className="cl3">
+                        
                         <div className="flex justify-between w-[400px] items-center">
                             <label className="text-[23px] font-serif">Email</label>
-                            <input type="email" name="email" value={formData.email} className="text-center h-[30px] w-[300px] border-solid border-[1.5px] border-gray-300 " placeholder="Enter You Email" onChange={hanldleinput} required />
+                            <input type="email" 
+                            name="email" 
+                            value={formData.email} 
+                            className="text-center h-[30px] w-[300px] border-solid border-[1.5px] border-gray-300 " 
+                            placeholder="Enter You Email" 
+                            onChange={hanldleinput} required />
 
                         </div>
+
                         <div className="flex justify-between w-[400px] items-center">
                             <label className="text-[23px] font-serif" >Password</label>
-                            <input type={show ? "password" : "text"} name="password" value={formData.password} className="text-center h-[30px] w-[300px] border-solid border-[1.5px] border-gray-300 absolute ml-[100px]" placeholder="Enter You Password " onChange={hanldleinput} required />
-                            <button type="button" className="relative mr-[10px]" onClick={HandleShow}>{show ? <FaEye /> : <FaEyeSlash/>} </button>
+                            <input 
+                            type={show ? "password" : "text"} 
+                            name="password" 
+                            value={formData.password} 
+                            className="text-center h-[30px] w-[300px] border-solid border-[1.5px] border-gray-300 absolute ml-[100px]" placeholder="Enter You Password " 
+                            onChange={hanldleinput} required />
+                            
+                            <button 
+                            type="button" 
+                            className="relative mr-[10px]" 
+                            onClick={HandleShow}>
+                                {show ? <FaEye /> : <FaEyeSlash />} 
+                            </button>
                         </div>
+
                         {error && <span className="text-red-500">{error}</span>}
 
-
-                        <button type="button" onClick={singupUser} className="h-[45px] w-[100px] text-[20px] text-white bg-blue-500 rounded-[25px] cursor-pointer" >Register</button>
+                        <button 
+                            type="button" 
+                            onClick={singupUser} 
+                            className="h-[45px] w-[100px] text-[20px] text-white bg-blue-500 rounded-[25px] cursor-pointer" >
+                                Register
+                        </button>
                     </form>
-                    <p onClick={handleClick} className="text-blue-600 hover:underline mt-6 cursor-pointer">already have an account?Sing-in</p>
+
+                    <p onClick={handleClick} 
+                    className="text-blue-600 hover:underline mt-6 cursor-pointer">
+                        already have an account?Sing-in
+                    </p>
                 </div>
             )}
-{/* 
-          //  {userRole === "admin" && <Admin logout={handleLogout} />}
-            {userRole === "user" && <User logout={handleLogout} />} */}
 
         </>
     )

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Footer() {
+function HomeFooter() {
 
     return (
         <>
@@ -13,4 +13,4 @@ function Footer() {
 
         </>
     )
-} export default Footer
+} export default HomeFooter
