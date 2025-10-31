@@ -7,15 +7,21 @@ import { Outlet } from "react-router-dom";
 
 const User = () => {
   return (
-    <div>
-      <Navbar />
-      <div className="flex  bg-gray-200 min-h-130 ">
-        <div className="w-[20%]  bg-red-300">
+    <div className=" h-screen flex flex-col">
+      <div className="">
+        <Navbar />
+      </div>
+      <div className="flex overflow-hidden bg-gray-200 min-h-130 ">
+        <div className="  bg-red-300">
           <Sidebar />
         </div>
-        <Outlet />
+        <div className="overflow-y-auto">
+          <Outlet />
+        </div>
       </div>
-      <Footer />
+      <div className="">
+        <Footer />
+      </div>
     </div>
   );
 };

@@ -10,6 +10,9 @@ import Admin from './components/Admin';
 import { Profile } from './SidebarPages/Profile';
 import { Settings } from './SidebarPages/Settings';
 import { Help } from './SidebarPages/Help';
+import  Product  from './SidebarPages/Product';
+import { TopRatedMovies } from './SidebarPages/TopRatedMovies';
+import { UpcomingMovies } from './SidebarPages/UpcomingMovies';
 
 const appRouter = createBrowserRouter([
   {
@@ -19,7 +22,21 @@ const appRouter = createBrowserRouter([
   {
     path:'/user',
     element:<User/>,
-    children:[{
+    children:[
+    {
+     path:'',
+     element:<Product/>,
+    
+    },
+    {
+      path:'popular',
+      element:<TopRatedMovies/>
+     },
+     {
+      path:"upcoming",
+      element:<UpcomingMovies/>
+     },
+      {
       path :"profile",
       element:<Profile/>
     },
@@ -31,7 +48,6 @@ const appRouter = createBrowserRouter([
       path :"help",
       element:<Help/>
     }
-
   ]
   },
   {

@@ -6,7 +6,7 @@ export const Contacts = () => {
   return (
     <div>
       <Navbar />
-      <div className="text-black flex justify-center items-center min-h-130">
+      <div className="text-black flex justify-center items-center min-h-131">
         Contacts
       </div>
       <Footer />

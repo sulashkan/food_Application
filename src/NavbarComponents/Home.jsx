@@ -6,7 +6,7 @@ export const Home = () => {
   return (
     <div>
       <Navbar />
-      <div className="text-black flex justify-center items-center min-h-130">
+      <div className="text-black flex justify-center items-center min-h-131 ">
         Home
       </div>
       <Footer />
