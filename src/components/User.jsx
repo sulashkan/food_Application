@@ -11,8 +11,8 @@ const User = () => {
       <div className="">
         <Navbar />
       </div>
-      <div className="flex overflow-hidden bg-gray-200 min-h-130 ">
-        <div className="  bg-red-300">
+      <div className="flex overflow-hidden  min-h-130 ">
+        <div className="">
           <Sidebar />
         </div>
         <div className="overflow-y-auto">

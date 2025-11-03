@@ -29,7 +29,7 @@ const appRouter = createBrowserRouter([
     
     },
     {
-      path:'popular',
+      path:'toprated',
       element:<TopRatedMovies/>
      },
      {
