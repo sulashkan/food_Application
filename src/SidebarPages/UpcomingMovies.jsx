@@ -8,17 +8,17 @@ const options = { method: "GET", headers: { accept: "application/json" } };
 
 export const UpcomingMovies = () => {
   
-  const { data, loading } = useFetch(url, options);
+  const { data, loading, page , setPage , totalPage } = useFetch(url, options);
 
   if (loading)
     return (
-      <div className="font-bold text-3xl flex min-h-[30rem] min-w-[64rem] justify-center items-center ">
+      <div className="font-bold text-3xl flex min-h-120 min-w-5xl justify-center items-center ">
         Loading...
       </div>
     );
 
   return (
-    <div className="flex-1 bg-gradient-to-b from-[#04154e] to-[#010a25] min-h-screen text-white p-10 flex-wrap   overflow-y-auto">
+    <div className="flex-1 bg-linear-to-b from-[#04154e] to-[#010a25] min-h-screen text-white p-10 flex-wrap   overflow-y-auto">
       <h1 className="text-3xl font-bold text-blue-300 mb-6 tracking-wide">
         Popular Movies
       </h1>
@@ -32,10 +32,10 @@ export const UpcomingMovies = () => {
             <img
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               alt={movie.original_title}
-              className="w-full h-[320px] object-cover group-hover:opacity-80 transition-opacity duration-300"
+              className="w-full h-80 object-cover group-hover:opacity-80 transition-opacity duration-300"
             />
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-4 flex flex-col justify-end">
+            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-4 flex flex-col justify-end">
               <h2 className="text-lg font-semibold mb-2">
                 {movie.original_title}
               </h2>
@@ -45,6 +45,20 @@ export const UpcomingMovies = () => {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="flex justify-center items-center w-full mt-5 gap-3">
+        {page >1 && (
+          <button  onClick={() => setPage(page-1)} className=" border p-2 rounded-md">
+            Previous
+          </button>
+        )}
+        <div>{page}</div>
+        {page < totalPage && (
+          <button onClick={() => setPage(page+1)} className="border p-2 rounded-md">
+            Next
+          </button>
+        )}
       </div>
     </div>
   );

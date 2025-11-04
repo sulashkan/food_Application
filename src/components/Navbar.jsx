@@ -5,7 +5,7 @@ export const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <nav className="w-full bg-gradient-to-r from-[#031b4e] to-[#052d73] text-white shadow-lg">
+    <nav className="w-full bg-linear-to-r from-[#031b4e] to-[#052d73] text-white shadow-lg">
       <div className="flex justify-between items-center px-10 py-4">
         {/* Brand */}
         <h1 className="text-2xl font-bold text-blue-400 tracking-wide">MyApp+</h1>

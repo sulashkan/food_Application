@@ -11,7 +11,7 @@ export const Sidebar = () => {
   }
 
   return (
-    <div className="h-screen w-64 bg-gradient-to-b from-[#031b4e] to-[#052d73] text-white flex flex-col py-8 px-5 shadow-xl ">
+    <div className="h-screen w-64 bg-linear-to-b from-[#031b4e] to-[#052d73] text-white flex flex-col py-8 px-5 shadow-xl ">
       <nav className="flex flex-col gap-4">
         <Link
           to="/home"
