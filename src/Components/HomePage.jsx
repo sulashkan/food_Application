@@ -1,18 +1,20 @@
-import React from "react";
+
+import React, { useContext } from "react";
 import { Outlet } from "react-router-dom";
+import { ThemeContext } from "../Context/Context";
 
-function HomePage(){
+function HomePage() {
+  const { theme } = useContext(ThemeContext);
 
-    return(
-        <>
-            <div className=" w-full bg-white flex-1 overflow-y-auto">
-                <h1 className="flex items-center justify-center">
-                
-                
-            </h1>
-            <Outlet/>
-            </div>
-            
-        </>
-    )
-}export default HomePage
+  return (
+    <div
+      className={`w-full flex-1 overflow-y-auto ${
+        theme === "dark" ? "bg-[#0f0f0f] text-white" : "bg-white text-black"
+      }`}
+    >
+    
+      <Outlet />
+    </div>
+  );
+}
+export default HomePage;

@@ -1,9 +1,11 @@
-import React from "react";
+import React,{useContext} from "react";
 import useFetch from "../Components/Hooks/GetData/FetchData";
+import { ThemeContext } from "../Context/Context";
 
 function Order() {
   const path = "/movie/top_rated";
-  const { data, loading, error } = useFetch(path);
+  const { data, loading, error,page,setpage,totalpage } = useFetch(path);
+  const { theme } = useContext(ThemeContext);
 
   if (loading)
     return <p className="text-white text-center mt-10">Loading...</p>;
@@ -11,8 +13,8 @@ function Order() {
     return <p className="text-red-500 text-center mt-10">Error: {error}</p>;
 
   return (
-    <div className="bg-gradient-to-b from-[#0d0d0d] to-[#141414] min-h-screen py-10 px-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
+    <div className={`min-h-screen py-10 px-64${theme === "dark" ? "bg-gradient-to-b from-[#0d0d0d] to-[#141414] ": "bg-white text-black"}`}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
         {data?.results?.map((movie, index) => (
           <div
             key={index}
@@ -36,6 +38,17 @@ function Order() {
             </div>
           </div>
         ))}
+      </div>
+      <div className=" flex justify-center items-center w-full h-15 mt-4">
+        <div className="flex w-44 justify-center gap-3">
+          {page > 1 && (
+          <button type="button" className=" w-20 bg-[#e50914] hover:bg-[#ff1c1c] text-white font-medium py-2 rounded-full transition cursor-pointer" onClick={()=>setpage(page-1)}> Previous</button>
+        )}
+        {/* <p className="w-5 text-center bg-[#e50914] hover:bg-[#ff1c1c] text-white font-medium py-2  transition cursor-pointer">{page}</p> */}
+        {page < totalpage && (
+          <button type="button" className=" w-20 bg-[#e50914] hover:bg-[#ff1c1c] text-white font-medium py-2 rounded-full transition cursor-pointer" onClick={()=>setpage(page+1)}>Next</button>
+        )}
+        </div>
       </div>
     </div>
   );

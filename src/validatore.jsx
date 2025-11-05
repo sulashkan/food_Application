@@ -20,3 +20,5 @@ export function Validator({ email, password }) {
     return true
 
 }
+
+

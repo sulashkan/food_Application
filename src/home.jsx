@@ -1,21 +1,13 @@
 import React, { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { app } from "./firebase";
-import Admin from "./Admin";
-import User from "./User";
 import { Validator } from "./validatore";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import HomeNav from "./Components/HomeNav";
 
 
 const auth = getAuth(app);
-
 function Home() {
-
-
-
-
     //TODO:  EMAIL AND PASSWORD SHOULD BE ONE STATE
     const [formData, setFormData] = useState({
         email: "",
@@ -44,6 +36,7 @@ function Home() {
         alert("Successfully Registered!!");
         setUseRole("user");
         setShowRegister(false);
+        navigate("/user")
     }
 
 

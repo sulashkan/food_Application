@@ -8,7 +8,7 @@ import Order from "./Pages/Order";
 import Profile from "./Pages/Profile";
 import Welcome from "./Pages/Welcome";
 import Start from "./Start";
-
+import Search from "./Pages/Search";
 function App() {
   const appRouter = createBrowserRouter([
     {
@@ -34,6 +34,10 @@ function App() {
         {
           path: "profile",
           element: <Profile />,
+        },
+         {
+          path: "search",
+          element: <Search/>,
         },
       ],
     },
