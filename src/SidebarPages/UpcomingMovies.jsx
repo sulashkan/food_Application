@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { PlayCircle } from "lucide-react";
 import useFetch from "../custom_Hook/useApi";
+import { ThemeContext } from "../context/ThemContext";
 
 const url = `${import.meta.env.VITE_BASE_URL}/movie/upcoming?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&page=1`;
 const options = { method: "GET", headers: { accept: "application/json" } };
@@ -9,6 +10,7 @@ const options = { method: "GET", headers: { accept: "application/json" } };
 export const UpcomingMovies = () => {
   
   const { data, loading, page , setPage , totalPage } = useFetch(url, options);
+  const {theme} = useContext(ThemeContext);
 
   if (loading)
     return (
@@ -18,9 +20,9 @@ export const UpcomingMovies = () => {
     );
 
   return (
-    <div className="flex-1 bg-linear-to-b from-[#04154e] to-[#010a25] min-h-screen text-white p-10 flex-wrap   overflow-y-auto">
-      <h1 className="text-3xl font-bold text-blue-300 mb-6 tracking-wide">
-        Popular Movies
+    <div className={`flex ${theme === 'dark' ? "bg-linear-to-b from-[#04154e] to-[#010a25]" : "bg-white"} min-h-screen text-white p-10  flex-wrap  overflow-y-auto`}>
+      <h1 className={`text-3xl font-bold ${theme === 'dark' ?  "text-blue-300" : "text-blue-700"} mb-6 tracking-wide`}>
+        Upcoming Movies
       </h1>
 
       <div className=" flex  flex-wrap  gap-7 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
@@ -53,7 +55,7 @@ export const UpcomingMovies = () => {
             Previous
           </button>
         )}
-        <div>{page}</div>
+        <div>{page} / {totalPage}</div>
         {page < totalPage && (
           <button onClick={() => setPage(page+1)} className="border p-2 rounded-md">
             Next

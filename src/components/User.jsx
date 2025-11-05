@@ -4,14 +4,16 @@ import { Sidebar } from "./Sidebar";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { Outlet } from "react-router-dom";
+import { ThemeContext } from "../context/ThemContext";
 
 const User = () => {
+  
   return (
-    <div className=" h-screen flex flex-col">
+    <div className=" h-screen flex flex-col ">
       <div className="">
         <Navbar />
       </div>
-      <div className="flex overflow-hidden  min-h-130 ">
+      <div className="flex overflow-hidden  min-h-130 " >
         <div className="">
           <Sidebar />
         </div>

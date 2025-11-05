@@ -5,18 +5,19 @@ const useFetch = (url, options) => {
   const [data, setData] = useState([]);
   const [page , setPage] = useState(1);
   const [totalPage , setTotalPage] = useState(null);
+  // const [search , setSearch] = useState("");
 
   useEffect(() => {
     setLoading(true);
     const fetchData = async () => {
       try {
-       
-        const response = await fetch( `${url}&page=${page}`, options);
+
+        const response = await fetch( `${url}&page=${page}` ,options);
         const data = await response.json();
         setData(data?.results);
         setPage(data.page);
         setTotalPage(data.total_pages);
-        console.log(page  )
+        console.log(data.page)
         
         setLoading(false);
       } catch(err) {

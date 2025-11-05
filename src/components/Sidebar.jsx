@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Home, User, Settings, HelpCircle, ChevronDown } from "lucide-react";
+import { ThemeContext } from "../context/ThemContext";
 
 export const Sidebar = () => {
   const navigate = useNavigate();
+  const {theme} = useContext(ThemeContext);
 
   function handler(e) {
     const path = e.target.value;
@@ -11,7 +13,7 @@ export const Sidebar = () => {
   }
 
   return (
-    <div className="h-screen w-64 bg-linear-to-b from-[#031b4e] to-[#052d73] text-white flex flex-col py-8 px-5 shadow-xl ">
+    <div className={`h-screen w-64 ${theme === "dark" ? "bg-linear-to-b from-[#031b4e] to-[#052d73] text-white " : "bg-white"} flex flex-col py-8 px-5 shadow-xl `}>
       <nav className="flex flex-col gap-4">
         <Link
           to="/home"

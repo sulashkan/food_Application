@@ -1,6 +1,7 @@
-import React from "react";
+import React, {  useContext } from "react";
 import { PlayCircle } from "lucide-react";
 import useFetch from "../custom_Hook/useApi";
+import { ThemeContext } from "../context/ThemContext";
 
 
 const url = `${import.meta.env.VITE_BASE_URL}/movie/top_rated?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&`;
@@ -8,6 +9,7 @@ const options = { method: "GET", headers: { accept: "application/json" } };
 
 export const TopRatedMovies = () => {
   const { data, loading , page , totalPage  , setPage} = useFetch(url, options);
+  const {theme} = useContext(ThemeContext);
 
   if (loading)
     return (
@@ -18,8 +20,8 @@ export const TopRatedMovies = () => {
 
 
   return (
-    <div className="flex-1 bg-linear-to-b from-[#04154e] to-[#010a25] min-h-screen text-white p-10 flex-wrap   overflow-y-auto">
-      <h1 className="text-3xl font-bold text-blue-300 mb-6 tracking-wide">
+    <div className={`flex ${theme === 'dark' ? "bg-linear-to-b from-[#04154e] to-[#010a25]" : "bg-white"} min-h-screen text-white p-10  flex-wrap  overflow-y-auto`}>
+      <h1 className={`text-3xl font-bold ${theme === 'dark' ?  "text-blue-300" : "text-blue-700"} mb-6 tracking-wide`}>
         TopRated Movies
       </h1>
 
@@ -57,7 +59,7 @@ export const TopRatedMovies = () => {
             Previous
           </button>
         )}
-        <p>{page}</p>
+        <p>{page} / {totalPage}</p>
         {page < totalPage && (
           <button
             onClick={() => setPage(page + 1)}
