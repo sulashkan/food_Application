@@ -1,6 +1,4 @@
-import React from "react";
 import "./App.css";
-import Home from "./home";
 import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 import User from "./User";
 import Admin from "./Admin";
@@ -10,6 +8,7 @@ import Welcome from "./Pages/Welcome";
 import Start from "./Start";
 import Search from "./Pages/Search";
 import PrivateRoute from "./CustomHooks/ContextCustoms";
+import Details from "./Pages/Details";
 
 function App() {
   const appRouter = createBrowserRouter([
@@ -42,6 +41,10 @@ function App() {
          {
           path: "search",
           element: <Search/>,
+        },
+         {
+          path: "details",
+          element: <Details/>,
         },
       ],
     },

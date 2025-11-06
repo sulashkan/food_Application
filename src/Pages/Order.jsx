@@ -8,9 +8,9 @@ function Order() {
   const { theme } = useContext(ThemeContext);
 
   if (loading)
-    return <p className="text-white text-center mt-10">Loading...</p>;
+    return <p className="text-white text-center h-157.5 mt-10">Loading...</p>;
   if (error)
-    return <p className="text-red-500 text-center mt-10">Error: {error}</p>;
+    return <p className="text-red-500 text-center h-157.5 mt-10">Error: {error}</p>;
 
   return (
     <div className={`min-h-screen py-10 px-64${theme === "dark" ? "bg-gradient-to-b from-[#0d0d0d] to-[#141414] ": "bg-white text-black"}`}>

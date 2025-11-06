@@ -2,8 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 function HomeNav() {
 
-    const navigate = useNavigate()
-
     return (
         <>
             <nav className="w-full h-[70px] bg-[#141414] border-b border-[#2a2a2a] flex items-center justify-between px-8 shadow-md">

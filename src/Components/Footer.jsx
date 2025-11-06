@@ -9,7 +9,7 @@ function Footer() {
       className={`w-full h-[60px] border-t flex justify-center items-center text-sm ${
         theme === "dark"
           ? "bg-[#141414] border-[#2a2a2a] text-[#b3b3b3]"
-          : "bg-white border-gray-300 text-gray-700"
+          : "bg-[#e3dede73] border-gray-300 text-gray-700"
       }`}
     >
       <p>

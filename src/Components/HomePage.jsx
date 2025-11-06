@@ -9,7 +9,9 @@ function HomePage() {
   return (
     <div
       className={`w-full flex-1 overflow-y-auto ${
-        theme === "dark" ? "bg-[#0f0f0f] text-white" : "bg-white text-black"
+        theme === "dark"
+      ? "bg-gradient-to-b from-[#0d0d0d] to-[#141414]"
+      : "bg-[#e3dede73] text-black"
       }`}
     >
     

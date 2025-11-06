@@ -23,7 +23,7 @@ function NavBar() {
       className={`w-full h-[70px] border-b flex items-center justify-between px-8 shadow-md ${
         theme === "dark"
           ? "bg-[#141414] border-[#2a2a2a] text-white"
-          : "bg-white border-gray-300 text-black"
+          : "bg-[#e3dede73] border-gray-300 text-black"
       }`}
     >
       <h1 className="text-3xl font-bold tracking-wide">

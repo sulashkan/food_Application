@@ -23,21 +23,21 @@ function Search() {
     setSearch(e.target.value);
   };
 
-  if (loading) return <p className="text-white text-center mt-10">Loading...</p>;
-  if (error) return <p className="text-red-500 text-center mt-10">Error: {error}</p>;
+  if (loading) return <p className="text-white text-center h-157.5 mt-10">Loading...</p>;
+  if (error) return <p className="text-red-500 text-center h-157.5 mt-10">Error: {error}</p>;
 
   return (
     <div
-      className={`min-h-screen py-10 px-64 ${
+      className={`min-h-screen py-10 px-7 ${
         theme === "dark"
           ? "bg-gradient-to-b from-[#0d0d0d] to-[#141414] "
           : "bg-white text-black"
       }`}
     >
-      <div className="mb-6">
+      <div className="mb-6 flex justify-center">
         <input
           type="text"
-          className={`bg-white text-black px-4 py-2 rounded w-full text-center h-[40px] w-[300px]  border-solid border-[1.5px] border-gray-300 rounded-[5px] shadow-lg w-64 transform transition focus:outline-none duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(229,9,20,0.4)]"
+          className={`bg-white text-black px-30 py-2 rounded  text-center h-[40px] w-200   border-solid border-[1.5px] border-gray-300 rounded-[5px] shadow-lg w-64 transform transition focus:outline-none duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(229,9,20,0.4)]"
       }`}
           placeholder="Search Movie"
           onChange={handleSearch}
@@ -45,7 +45,7 @@ function Search() {
         />
       </div>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
        {data.length ?(<div className=" text-white">Not Found</div>):
        (data?.results?.map((movie, index) => (
           <div

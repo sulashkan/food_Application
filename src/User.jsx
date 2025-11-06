@@ -14,7 +14,7 @@ function User({ logout }) {
       </div>
 
       <div className="flex flex-1 overflow-hidden">
-        <div className="w-64 flex-shrink-0 bg-gray-100 border-r">
+        <div className="md:w-40 md:h-1 lg:w-64 flex-shrink-0 bg-gray-100 border-r">
           <Sidebar />
         </div>
         <div className="flex-1 overflow-y-auto">
