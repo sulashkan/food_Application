@@ -1,78 +1,48 @@
-import { useEffect, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-// Navbar -
+
+// Public
+import FormLayout from "../components/form/FormLayout";
+import NotFound from "../components/notFound/NotFound";
+
+// Protected layout
 import Navbar from "../components/Navbar/Navbar";
-import Footer from "../components/footer/Footer";
-// Public Pages  -
-import Home from "../pages/home/Home";
-import About from "../pages/about/About";
-import Contact from "../pages/contact/Contact";
-import FormLayout from "../components/FormLayout";
-// Protcted Pages  -
 import PrivateRoutes from "./PrivateRoutes";
-import Profile from "../components/dashbord/pages/profile/Profile";
-import Orders from "../components/dashbord/pages/popular/Popular";
-import HomePage from "../components/dashbord/pages/dashHome/HomePage"; // Dash - Home
-import Popular from "../components/dashbord/pages/popular/Popular";
-import TopRated from "../components/dashbord/pages/topRated/TopRated";
-import UpComing from "../components/dashbord/pages/upComing/UpComing";
-import RecentlyPlayed from "../components/dashbord/pages/recentlyPlayed/RecentlyPlayed";
+// Protected - Pages -
+import HomePage from "../pages/home/HomePage";
+import Popular from "../pages/popular/Popular";
+import TopRated from "../pages/topRated/TopRated";
+import UpComing from "../pages/upComing/UpComing";
+import RecentlyPlayed from "../pages/recentlyPlayed/RecentlyPlayed";
+import WatchTrailer from "../pages/watch/WatchTrailer";
+import { useSearch } from "../context-api/dataProvider";
 
 const Routing = () => {
-  const [isLogin, setIsLogin] = useState(false);
-
-  useEffect(() => {
-    const userData = JSON.parse(localStorage.getItem("user"));
-    // console.log("logged-in user Data", userData);
-    if (Object.entries(userData).length) {
-      setIsLogin(true);
-    }
-  }, []);
+  const { user } = useSearch();
 
   const appRouter = createBrowserRouter([
-    {
-      path: "/",
-      element: (
-        <>
-          <Navbar />
-          <Footer />
-        </>
-      ),
-      children: [
-        {
+    !user
+      ? {
+          path: "*",
+          element: <FormLayout />,
           index: true,
-          element: <Home />,
-        },
-        {
-          path: "/about",
-          element: <About />,
-        },
-        {
-          path: "/contact",
-          element: <Contact />,
-        },
-        {
-          path: "/form",
-          element: <FormLayout setIsLogin={setIsLogin} />,
-        },
-
-        {
-          path: "dashboard",
-          element: <PrivateRoutes isLogin={isLogin} />,
+        }
+      : {
+          path: "/",
+          element: (
+            <PrivateRoutes>
+              <Navbar />
+            </PrivateRoutes>
+          ),
           children: [
             { index: true, element: <HomePage /> },
-            { path: "popular", element: <Popular /> },
-            { path: "now_playing", element: <RecentlyPlayed /> },
-            { path: "upcoming", element: <UpComing /> },
-            { path: "top_rated", element: <TopRated /> },
+            { path: "/popular", element: <Popular /> },
+            { path: "/now_playing", element: <RecentlyPlayed /> },
+            { path: "/upcoming", element: <UpComing /> },
+            { path: "/top_rated", element: <TopRated /> },
+            { path: "/trailer/:id", element: <WatchTrailer /> },
+            { path: "*", element: <NotFound /> },
           ],
         },
-        {
-          path: "*",
-          element: <h1>Error : Page Not Found 404</h1>,
-        },
-      ],
-    },
   ]);
 
   return <RouterProvider router={appRouter} />;

@@ -11,7 +11,7 @@
 const registerInputValidation = ({
   fname,
   email,
-  contact,
+  number,
   gender,
   password,
 }) => {
@@ -30,7 +30,7 @@ const registerInputValidation = ({
   if (!emailRegex.test(email)) {
     errors.email = "Invalid Email Address Enter valid Email *";
   }
-  if (!contactRegex.test(contact)) {
+  if (!contactRegex.test(number)) {
     errors.contact = "Invalid Number  Enter valid Number *";
   }
 

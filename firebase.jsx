@@ -1,5 +1,4 @@
-
-import { initializeApp , } from "firebase/app";
+import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
@@ -9,10 +8,9 @@ const firebaseConfig = {
   storageBucket: "authentication-3ada5.firebasestorage.app",
   messagingSenderId: "965077882907",
   appId: "1:965077882907:web:eb24fdcb1c600a1facc0be",
-  measurementId: "G-EJFMTXFWSS"
+  measurementId: "G-EJFMTXFWSS",
 };
 
-// Initialize Firebase
-const app= initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
+const app = initializeApp(firebaseConfig);
+
 export default app;

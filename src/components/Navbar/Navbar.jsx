@@ -1,25 +1,43 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { FaMagnifyingGlass } from "react-icons/fa6";
-import { useState } from "react";
+import { useSearch } from "../../context-api/dataProvider";
+import Footer from "../footer/Footer";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
+  const { setUser } = useSearch();
   const [search, setSearch] = useState("");
+  const { setDebouncedKeyword, user } = useSearch(); // getting from Context -
+
+  // debouncing Keyword making -
+  useEffect(() => {
+    let data = setTimeout(() => {
+      setDebouncedKeyword(search);
+    }, 800);
+    return () => clearInterval(data);
+  }, [search, setDebouncedKeyword]);
+
   const links = [
     {
       path: "/",
-      name: "Home",
+      text: "Home",
     },
     {
-      path: "/about",
-      name: "About",
+      path: "/popular",
+      text: "Popular Movies",
     },
     {
-      path: "/contact",
-      name: "Contact",
+      path: "/now_playing",
+      text: "Trending Movies",
+    },
+
+    {
+      path: "/top_rated",
+      text: "Top Rated Movies",
     },
     {
-      path: "/form",
-      name: "Login",
+      path: "/upcoming",
+      text: "Up-Coming Movies",
     },
   ];
 
@@ -28,16 +46,17 @@ const Navbar = () => {
     alert("your Search item is : " + search);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setUser(null);
+  };
+
   return (
     <>
       <nav className="flex w-full justify-evenly items-center gap-5  min-h-[7vh] text-xl bg-green-950 fixed top-0 z-10">
-        {/* Logo */}
-        <div className="logo text-3xl text-white">
-          <Link to="/">{`< LOGO />`}</Link>
-        </div>
         {/* SearchBox */}
         <form
-          className="searchBar border-l-4 ps-2 py-2 border-red-400"
+          className="searchBar border-l-4 ps-2 py-2 border-red-800"
           onSubmit={HandleSubmit}
         >
           <input
@@ -58,15 +77,26 @@ const Navbar = () => {
               className="text-white hover:bg-green-800 px-3 py-1 rounded"
               to={nav.path}
             >
-              {nav.name}
+              {nav.text}
             </NavLink>
           ))}
+          {user ? (
+            <NavLink
+              onClick={handleLogout}
+              className="hover:bg-red-500 text-white   bg-green-800 px-3 py-1 rounded"
+            >
+              Logout
+            </NavLink>
+          ) : (
+            ""
+          )}
         </div>
       </nav>
 
-      <div className="grid items-center justify-center min-h-[90vh] pt-[7vh] text-white bg-black">
+      <div className="bg-black flex justify-center items-center p-4  w-full  text-white mt-10">
         <Outlet />
       </div>
+      <Footer />
     </>
   );
 };
