@@ -9,6 +9,8 @@ import Profile from "./Pages/Profile";
 import Welcome from "./Pages/Welcome";
 import Start from "./Start";
 import Search from "./Pages/Search";
+import PrivateRoute from "./CustomHooks/ContextCustoms";
+
 function App() {
   const appRouter = createBrowserRouter([
     {
@@ -17,7 +19,9 @@ function App() {
     },
     {
       path: "/user",
-      element: <User />,
+      element: <PrivateRoute>
+        <User />
+      </PrivateRoute>,
       children: [
         {
           index: true, 

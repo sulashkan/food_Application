@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import useFetch from "../Components/Hooks/GetData/FetchData";
+import useFetch from "../CustomHooks/FetchData"
 import { ThemeContext } from "../Context/Context";
-import useDebounce from "../Components/Hooks/GetData/Debouncer";
+import useDebounce from "../CustomHooks/Debouncer";
 
 function Search() {
   const [search, setSearch] = useState("");

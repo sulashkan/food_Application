@@ -31,28 +31,3 @@ function User({ logout }) {
 }
 
 export default User;
-
-// import React from "react";
-// import Navbar from "./Navbar";
-// import Sidebar from "./SideBar";
-// import Footer from "./Footer";
-// import HomePage from "./HomePage";
-// import { Outlet } from "react-router-dom";
-// import { ThemeProvider } from "./Context/Context";
-
-// function User() {
-//   return (
-//     <ThemeProvider>
-//       <div className="flex flex-col min-h-screen">
-//         <Navbar />
-//         <div className="flex flex-1">
-//           <Sidebar />
-//           <Outlet />
-//         </div>
-//         <Footer />
-//       </div>
-//     </ThemeProvider>
-//   );
-// }
-
-// export default User;

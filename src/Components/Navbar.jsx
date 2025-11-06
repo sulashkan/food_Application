@@ -1,14 +1,22 @@
-
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "../Context/Context";
-import { getAuth, signOut } from "firebase/auth";
-import { FaMoon } from "react-icons/fa"; 
-import { FaSun } from "react-icons/fa";
+import { FaMoon, FaSun } from "react-icons/fa";
+import { useAuth } from "../Context/AuthContext"; 
 
 function NavBar() {
   const navigate = useNavigate();
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const { logout } = useAuth(); 
+
+  const handleLogout = async () => {
+    try {
+      await logout(); 
+      navigate("/");   
+    } catch (error) {
+      console.error("Logout error:", error.message);
+    }
+  };
 
   return (
     <nav
@@ -27,10 +35,11 @@ function NavBar() {
           onClick={toggleTheme}
           className="py-2 px-5 rounded-full bg-black hover:bg-[#ff1c1c] text-white font-medium transition duration-300"
         >
-          {theme === "dark" ? <FaSun/> : <FaMoon/>}
+          {theme === "dark" ? <FaSun /> : <FaMoon />}
         </button>
+
         <button
-          onClick={() => navigate("/")}
+          onClick={handleLogout} 
           className="py-2 px-5 rounded-full bg-[#e50914] hover:bg-[#ff1c1c] text-white font-medium transition duration-300"
         >
           LOGOUT
@@ -39,4 +48,5 @@ function NavBar() {
     </nav>
   );
 }
+
 export default NavBar;

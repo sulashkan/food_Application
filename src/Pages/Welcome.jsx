@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import useFetch from "../Components/Hooks/GetData/FetchData";
+import useFetch from "../CustomHooks/FetchData";
 import { ThemeContext } from "../Context/Context";
 
 function Welcome() {
