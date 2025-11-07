@@ -1,4 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState  } from "react";
+import { Link, Outlet } from "react-router-dom";
 import { PlayCircle } from "lucide-react";
 import useFetch from "../custom_Hook/useApi";
 import { LiaFileContractSolid } from "react-icons/lia";
@@ -12,6 +13,8 @@ const Product = () => {
   const [search, setSearch] = useState("");
   const {theme} = useContext(ThemeContext);
   const searchValue = useDebounce( search , 1000)
+  // const navigate = useNavigate();
+  
 
   let url = `https://api.themoviedb.org/3/${searchValue ? `search/movie?query=${encodeURIComponent(searchValue)}&api_key=${import.meta.env.VITE_API_KEY}&language=en-US` : `movie/popular?api_key=${import.meta.env.VITE_API_KEY}` }`;
   
@@ -21,7 +24,7 @@ const Product = () => {
 
   function searchHandler(e) {
     e.preventDefault();
-       setSearch(e.target.value);
+    setSearch(e.target.value);
   }
 
   if (loading)
@@ -45,13 +48,14 @@ const Product = () => {
            onChange={searchHandler}
            className="h-9 p-1 bg-gray-500 border-none rounded-md"
         ></input>
+       
         {/* <button type="submit" className=" border-none bg-amber-700  p-2" >Search</button> */}
        
       </div>
 
-      <div className=" grid   grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-3">
+      <div className="grid gap-7 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4">
 
-        {data.length===0 ? (<div className="text-white w-full h-full">Not Found</div>) : (data.map((movie, index) => (
+        {data.length === 0 ? (<div className="text-white w-full h-full  justify-center items-center">Movie Not Found</div>) : (data.map((movie, index) => (
             <div
               key={index}
               className=" relative w-[200px] h-[300px] group bg-[#0a1b4d] rounded-2xl overflow-hidden shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300"
@@ -66,9 +70,14 @@ const Product = () => {
                 <h2 className="text-lg font-semibold mb-2">
                   {movie.original_title}
                 </h2>
-                <button className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-md text-sm font-medium transition-all duration-300">
-                  <PlayCircle className="w-4 h-4" /> Watch Now
-                </button>
+                
+                <Link to={`detail/${movie.id}`} className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-md text-sm font-medium transition-all duration-300" 
+                >
+                  <PlayCircle className="w-4 h-4" /> Watch Now 
+                 
+                </Link>
+                <Outlet/>
+                
               </div>
             </div>
           ))

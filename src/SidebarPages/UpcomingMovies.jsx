@@ -3,7 +3,7 @@ import { PlayCircle } from "lucide-react";
 import useFetch from "../custom_Hook/useApi";
 import { ThemeContext } from "../context/ThemContext";
 
-const url = `${import.meta.env.VITE_BASE_URL}/movie/upcoming?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&page=1`;
+const url = `${import.meta.env.VITE_BASE_URL}/movie/upcoming?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&`;
 const options = { method: "GET", headers: { accept: "application/json" } };
 
 
@@ -25,11 +25,11 @@ export const UpcomingMovies = () => {
         Upcoming Movies
       </h1>
 
-      <div className=" flex  flex-wrap  gap-7 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+      <div className=" grid  gap-7 grid-cols-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {data.map((movie, index) => (
           <div
             key={index}
-            className=" relative group bg-[#0a1b4d] rounded-2xl overflow-hidden shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300"
+            className=" relative group w-[200px] h-[300px]  bg-[#0a1b4d] rounded-2xl overflow-hidden shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300"
           >
             <img
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}

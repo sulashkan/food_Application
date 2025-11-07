@@ -49,7 +49,7 @@ function Auth() {
       } catch (err) {
         alert("User Already exist");
         setIsLogin(!isLogin);
-        console.log(err);
+        throw new Error(err);
       }
     } else {
       try {
@@ -58,14 +58,14 @@ function Auth() {
           formData.email === "admin@gmail.com" &&
           formData.password === "Admin@123"
         ) {
-          console.log(formData);
+          
           await signInWithEmailAndPassword(
             auth,
             formData.email,
             formData.password
           );
-          console.log(formData.email);
-
+         
+             
           setShowLogin(!showLogin);
           navigate("/admin");
         } else {
@@ -74,18 +74,19 @@ function Auth() {
             formData.email,
             formData.password
           );
-
           setShowLogin(!showLogin);
           navigate("/user");
         }
       } catch (err) {
         alert("Register First");
-        console.log(err);
-        setIsLogin(!isLogin);
+         setIsLogin(!isLogin);
+        throw new Error(err);
+       
       }
       // })
     }
-
+    
+     localStorage.setItem("user" , JSON.stringify(formData));
     setFormData({ password: "", email: "" });
   };
 
@@ -96,7 +97,7 @@ function Auth() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center w-full h-screen bg-gradient-to-b from-[#868dae] to-[#02063b] text-white">
+    <div className="flex flex-col justify-center items-center w-full h-screen bg-linear-to-b from-[#868dae] to-[#02063b] text-white">
       <div className="bg-[#0e1a2b]/50 backdrop-blur-md p-10 rounded-2xl border-b-lime-600 border-b-2 w-96 border border-[#0f2e76]">
         <h1 className="text-3xl font-semibold text-center mb-6 tracking-wide text-[#f9f9f9]">
           {isLogin ? "Login" : "Signup"} Form

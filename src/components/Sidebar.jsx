@@ -9,7 +9,14 @@ export const Sidebar = () => {
 
   function handler(e) {
     const path = e.target.value;
-    if (path) navigate(path);
+    
+   if (path === "") {
+    navigate("/user");
+  } else {
+    navigate(`/user/${path}`);
+  }
+  
+  
   }
 
   return (
@@ -49,24 +56,16 @@ export const Sidebar = () => {
           <ChevronDown className="w-4 h-4" /> Movies
         </h1>
         <select
+            defaultValue=""
           onChange={handler}
           className="w-full bg-blue-900 text-white p-2 rounded-lg border border-blue-700 focus:outline-none hover:bg-blue-800 transition-all duration-200"
         >
-          <option value="/user">Popular Movies</option>
+          <option value="">popular Movies</option>
           <option value="toprated">Top Rated Movies</option>
           <option value="upcoming">Upcoming Movies</option>
         </select>
       </div>
 
-      {/* Spacer + Logout */}
-      <div className="mt-auto pt-6 border-t border-blue-700">
-        <button
-          onClick={() => navigate("/")}
-          className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg font-medium transition-all duration-300"
-        >
-          Log Out
-        </button>
-      </div>
     </div>
   );
 };

@@ -25,11 +25,11 @@ export const TopRatedMovies = () => {
         TopRated Movies
       </h1>
 
-      <div className=" flex  flex-wrap  gap-7 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+      <div className=" grid  gap-7 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-4">
         {data.map((movie, index) => (
           <div
             key={index}
-            className=" relative group bg-[#0a1b4d] rounded-2xl overflow-hidden shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300"
+            className=" relative w-[200px] h-[300px] group bg-[#0a1b4d] rounded-2xl overflow-hidden shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300"
           >
             <img
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}

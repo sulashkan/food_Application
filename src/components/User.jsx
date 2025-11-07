@@ -5,16 +5,18 @@ import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { Outlet } from "react-router-dom";
 import { ThemeContext } from "../context/ThemContext";
+import { AuthProvider } from "../context/AuthContext";
 
 const User = () => {
   
   return (
-    <div className=" h-screen flex flex-col ">
+   <AuthProvider>
+     <div className=" h-screen flex flex-col ">
       <div className="">
         <Navbar />
       </div>
       <div className="flex overflow-hidden  min-h-130 " >
-        <div className="">
+        <div>
           <Sidebar />
         </div>
         <div className="overflow-y-auto">
@@ -25,6 +27,7 @@ const User = () => {
         <Footer />
       </div>
     </div>
+   </AuthProvider>
   );
 };
 

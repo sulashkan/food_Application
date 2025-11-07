@@ -1,11 +1,13 @@
 import React, { useContext} from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ThemeContext } from "../context/ThemContext";
+import { useAuth } from "../context/AuthContext";
 
 
 export const Navbar = () => {
-  const navigate = useNavigate();
+
   const { theme, toggle } = useContext(ThemeContext);
+  const {logout} = useAuth();
 
   return (
     <nav
@@ -67,7 +69,7 @@ export const Navbar = () => {
           </Link>
 
           <button
-            onClick={() => navigate("/")}
+            onClick={logout}
             className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 shadow-md"
           >
             Log Out
