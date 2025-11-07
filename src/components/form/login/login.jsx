@@ -23,6 +23,18 @@ const Login = ({ setShowCmp }) => {
     password: "",
   });
 
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    },
+  });
+
   const HandleSubmit = async (e) => {
     e.preventDefault();
 
@@ -47,7 +59,7 @@ const Login = ({ setShowCmp }) => {
         setUser(credentials.user.providerData);
         Toast.fire({
           icon: "success",
-          title: "registerd successfully",
+          title: "Login successfully",
         });
         navigate("/");
       }
@@ -74,18 +86,6 @@ const Login = ({ setShowCmp }) => {
   const HandleShow = () => {
     setShow(!show);
   };
-
-  const Toast = Swal.mixin({
-    toast: true,
-    position: "top-end",
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.onmouseenter = Swal.stopTimer;
-      toast.onmouseleave = Swal.resumeTimer;
-    },
-  });
 
   return (
     <div className="grid items-center justify-center min-h-screen pt-[7vh] text-white bg-black">

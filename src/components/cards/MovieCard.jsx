@@ -1,34 +1,36 @@
-const img_api = import.meta.env.VITE_MOVIE_IMG_API;
 import { useNavigate } from "react-router-dom";
-import backUpImg from "../../assets/backUp.jpg";
+const img_api = import.meta.env.VITE_MOVIE_IMG_API;
+import backUpImg from "../../assets/backUp.png";
+import { IoStar } from "react-icons/io5";
 
 const MovieCard = ({ movie }) => {
   const navigate = useNavigate();
-  const handleClick = (id) => {
-    navigate(`/trailer/${id}`);
-  };
-  return (
-    <div className="card shadow-sm  min-w-[20vw] max-w-[20vw] h-[30vw] flex flex-col justify-center gap-4 bg-[#011810] rounded-xl p-2">
-      <img
-        src={movie.poster_path ? `${img_api}/${movie.poster_path}` : backUpImg}
-        alt={movie.title}
-        className="rounded-xl h-98 object-contain"
-      />
 
-      <div className="card-body items-center text-center">
-        <h2 className="card-title text-xl font-bold"> {movie.title}</h2>
-        <p>
-          Release Date : {movie.release_date?.split("-").reverse().join("-")}
+  return (
+    <div
+      onClick={() => navigate(`/movie-details/${movie.id}`)}
+      className="relative group overflow-hidden rounded-2xl cursor-pointer shadow-md hover:shadow-xl h-full min-w-[18vw]  transition-all duration-500 bg-gray-800"
+    >
+      <div>
+        <img
+          src={
+            movie.poster_path ? `${img_api}/${movie.poster_path}` : backUpImg
+          }
+          alt={movie.title}
+          className="w-full h-[500px] object-cover group-hover:scale-110 transition-transform duration-500"
+        />
+        <p className="text-yellow-500 absolute top-2 right-2 bg-green-950 rounded-2xl px-3 py-1 flex items-center gap-2">
+          <span className="text-xl">
+            <IoStar />
+          </span>
+          {movie.vote_average.toFixed(1)}
         </p>
-        <div className="card-actions p-2">
-          <button
-            type="button"
-            className="btn text-xl px-5 py-2 bg-green-500 rounded text-white"
-            onClick={() => handleClick(movie.id)}
-          >
-            Watch Trailer
-          </button>
-        </div>
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-4 text-white">
+        <h2 className="text-2xl font-bold truncate">{movie.title} </h2>
+        <p className="text-xl text-gray-300">
+          Release: {movie.release_date?.split("-").reverse().join("-") || "N/A"}
+        </p>
       </div>
     </div>
   );
