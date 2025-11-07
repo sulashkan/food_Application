@@ -11,7 +11,7 @@ function Sidebar() {
       className={`md:h-[89vh] lg:h-[86.3vh] sm:w-30 md:w-40 lg:w-64 p-6 border-r shadow-inner ${
         theme === "dark"
           ? "bg-[#1a1a1a] border-[#2a2a2a] text-white"
-          : "bg-[#e3dede73] border-gray-300 text-black"
+          : "bg-[#e3dede73] text-black border-gray-300"
       }`}
     >
       <h2 className="sm:text-xl md:text-xl lg:text-2xl font-semibold mb-6 tracking-wide">
@@ -85,7 +85,7 @@ function Sidebar() {
         : "text-black hover:bg-gray-200"
     }`}
         >
-          Tranding Today
+          Trending Today
         </Link>
       </nav>
     </div>

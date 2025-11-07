@@ -11,13 +11,7 @@ function HomeNav() {
                 </h1>
 
                 
-                {/* <button
-                    type="button"
-                    onClick={() => navigate("/")}
-                    className="bg-[#e50914] hover:bg-[#ff1c1c] text-white font-medium py-2 px-6 rounded-full transition duration-300 shadow-md hover:shadow-[0_0_10px_rgba(229,9,20,0.6)]"
-                >
-                    LOGOUT
-                </button> */}
+                
             </nav>
         </>
     )
