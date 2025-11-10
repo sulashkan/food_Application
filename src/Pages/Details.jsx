@@ -21,7 +21,7 @@ function Details() {
   };
 
   const filteredTrailers = trailers.filter(
-    (t) => t.type?.toLowerCase() === "trailer"
+    (t) => t.type?.toLowerCase() === "trailer" && t.site === "YouTube" && t.official === true
   );
 
   return (
@@ -32,17 +32,17 @@ function Details() {
           : "bg-[#f3f3f3] text-black"
       }`}
     >
-      {/* Back Button */}
+      
       <div className="w-full max-w-[900px] flex justify-start">
         <button
           onClick={handleBack}
-          className="bg-[#e50914] hover:bg-[#ff1c1c] text-white font-medium px-6 py-2 rounded-full shadow-md transition-all duration-300 hover:scale-105"
+          className="bg-[#e50914] hover:bg-[#ff1c1c] cursor-pointer text-white font-medium px-6 py-2 rounded-full shadow-md transition-all duration-300 hover:scale-105"
         >
           ← Back
         </button>
       </div>
 
-      {/* Movie Info Card */}
+      
       <div
         className={`w-full max-w-[900px] mt-6 mb-10 rounded-2xl shadow-2xl overflow-hidden ${
           theme === "dark" ? "bg-[#1a1a1a]" : "bg-white"
