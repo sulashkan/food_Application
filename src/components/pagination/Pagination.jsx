@@ -2,7 +2,7 @@ import ResponsivePagination from "react-responsive-pagination";
 import "./pagination.css";
 
 const Pagination = ({ currentPage, totalPages, setCurrentPage }) => {
-  totalPages = totalPages > 600 ? 500 : totalPages;
+  totalPages = totalPages > 500 ? 500 : totalPages;
 
   return (
     <div className="flex justify-center items-center w-full my-6">

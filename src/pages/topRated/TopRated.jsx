@@ -25,7 +25,7 @@ const TopRated = () => {
   ) : !data || data.length < 1 ? (
     <DataNotFound />
   ) : (
-    <div className="flex flex-wrap justify-center items-center gap-3 pt-10">
+    <div className="flex flex-wrap justify-center items-center gap-3 pt-10 min-h-[82.5vh]">
       {data?.map((movie, index) => (
         <MovieCard movie={movie} key={index} />
       ))}

@@ -15,6 +15,7 @@ import UpComing from "../pages/upComing/UpComing";
 import RecentlyPlayed from "../pages/recentlyPlayed/RecentlyPlayed";
 import WatchTrailer from "../pages/watch/WatchTrailer";
 import { useSearch } from "../context-api/dataProvider";
+import MovieDetails from "../components/movieDetails/MovieDetails";
 
 const Routing = () => {
   const { user } = useSearch();
@@ -39,6 +40,7 @@ const Routing = () => {
             { path: "/now_playing", element: <RecentlyPlayed /> },
             { path: "/upcoming", element: <UpComing /> },
             { path: "/top_rated", element: <TopRated /> },
+            { path: "/movie-details/:id", element: <MovieDetails /> },
             { path: "/trailer/:id", element: <WatchTrailer /> },
             { path: "*", element: <NotFound /> },
           ],

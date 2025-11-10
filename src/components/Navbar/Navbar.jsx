@@ -3,6 +3,7 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 import { useSearch } from "../../context-api/dataProvider";
 import Footer from "../footer/Footer";
 import { useState, useEffect } from "react";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { setUser } = useSearch();
@@ -41,31 +42,27 @@ const Navbar = () => {
     },
   ];
 
-  const HandleSubmit = (e) => {
-    e.preventDefault();
-    alert("your Search item is : " + search);
-  };
-
   const handleLogout = () => {
     localStorage.removeItem("user");
     setUser(null);
+    Swal.fire({
+      icon: "success",
+      text: "Logged out successfully",
+    });
   };
 
   return (
     <>
       <nav className="flex w-full justify-evenly items-center gap-5  min-h-[7vh] text-xl bg-green-950 fixed top-0 z-10">
         {/* SearchBox */}
-        <form
-          className="searchBar border-l-4 ps-2 py-2 border-red-800"
-          onSubmit={HandleSubmit}
-        >
+        <form className="searchBar border-l-4 ps-2 py-2 border-red-800">
           <input
             className="text-white"
             type="text"
             placeholder="Search here ..."
             onChange={(e) => setSearch(e.target.value)}
           />
-          <button>
+          <button type="button">
             <FaMagnifyingGlass className="text-white" />
           </button>
         </form>
@@ -82,6 +79,7 @@ const Navbar = () => {
           ))}
           {user ? (
             <NavLink
+              to="/"
               onClick={handleLogout}
               className="hover:bg-red-500 text-white   bg-green-800 px-3 py-1 rounded"
             >
