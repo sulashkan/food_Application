@@ -61,7 +61,7 @@ function Home() {
             signInWithEmailAndPassword(auth, formData.email, formData.password)
                 .then(() => {
                     setUseRole("user"),
-                        alert("logged in"),
+                    
                         // setShowLogin(false)
                         navigate("/User")
                 })

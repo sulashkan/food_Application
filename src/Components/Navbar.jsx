@@ -33,14 +33,14 @@ function NavBar() {
       <div className="flex gap-4">
         <button
           onClick={toggleTheme}
-          className="py-2 px-5 rounded-full bg-black hover:bg-[#ff1c1c] text-white font-medium transition duration-300"
+          className="py-2 px-5 rounded-full bg-black cursor-pointer hover:bg-[#ff1c1c] text-white font-medium transition duration-300"
         >
           {theme === "dark" ? <FaSun /> : <FaMoon />}
         </button>
 
         <button
           onClick={handleLogout} 
-          className="py-2 px-5 rounded-full bg-[#e50914] hover:bg-[#ff1c1c] text-white font-medium transition duration-300"
+          className="py-2 px-5 rounded-full bg-[#e50914] cursor-pointer hover:bg-[#ff1c1c] text-white font-medium transition duration-300"
         >
           LOGOUT
         </button>
