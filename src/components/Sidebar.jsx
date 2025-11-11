@@ -5,22 +5,26 @@ import { ThemeContext } from "../context/ThemContext";
 
 export const Sidebar = () => {
   const navigate = useNavigate();
-  const {theme} = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
 
   function handler(e) {
     const path = e.target.value;
-    
-   if (path === "") {
-    navigate("/user");
-  } else {
-    navigate(`/user/${path}`);
-  }
-  
-  
+
+    if (path === "") {
+      navigate("/user");
+    } else {
+      navigate(`/user/${path}`);
+    }
   }
 
   return (
-    <div className={`h-screen w-64 ${theme === "dark" ? "bg-linear-to-b from-[#031b4e] to-[#052d73] text-white " : "bg-white"} flex flex-col py-8 px-5 shadow-xl `}>
+    <div
+      className={`h-screen w-64 ${
+        theme === "dark"
+          ? "bg-linear-to-b from-[#031b4e] to-[#052d73] text-white "
+          : "bg-white"
+      } flex flex-col py-8 px-5 shadow-xl `}
+    >
       <nav className="flex flex-col gap-4">
         <Link
           to="/home"
@@ -50,13 +54,12 @@ export const Sidebar = () => {
 
       <div className="border-t border-blue-600 my-6"></div>
 
-      {/* Movies Section */}
       <div>
         <h1 className="text-blue-300 font-semibold flex items-center gap-2 mb-2">
           <ChevronDown className="w-4 h-4" /> Movies
         </h1>
         <select
-            defaultValue=""
+          defaultValue=""
           onChange={handler}
           className="w-full bg-blue-900 text-white p-2 rounded-lg border border-blue-700 focus:outline-none hover:bg-blue-800 transition-all duration-200"
         >
@@ -65,7 +68,6 @@ export const Sidebar = () => {
           <option value="upcoming">Upcoming Movies</option>
         </select>
       </div>
-
     </div>
   );
 };

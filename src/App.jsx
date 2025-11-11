@@ -33,7 +33,6 @@ const appRouter = createBrowserRouter([
     children: [
       {
         index: true,
-        //  path:"/user",
         element: <Product />,
       },
       {

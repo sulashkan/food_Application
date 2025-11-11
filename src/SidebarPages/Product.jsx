@@ -40,7 +40,6 @@ const Product = () => {
         <h1 className={`text-3xl font-bold ${theme === 'dark' ?  "text-blue-300" : "text-blue-700"} mb-6 tracking-wide`}>
           Popular Movies
         </h1>
-
            <input 
            type="text"
            placeholder="Search"
@@ -48,18 +47,13 @@ const Product = () => {
            onChange={searchHandler}
            className="h-9 p-1 bg-gray-500 border-none rounded-md"
         ></input>
-       
-        {/* <button type="submit" className=" border-none bg-amber-700  p-2" >Search</button> */}
-       
       </div>
 
       <div className="grid gap-7 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4">
 
         {data.length === 0 ? (<div className="text-white w-full h-full  justify-center items-center">Movie Not Found</div>) : (data.map((movie, index) => (
-            <div
-              key={index}
-              className=" relative w-[200px] h-[300px] group bg-[#0a1b4d] rounded-2xl overflow-hidden shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300"
-            >
+            <div key={index} className=" relative w-[200px] h-[300px] group bg-[#0a1b4d] rounded-2xl overflow-hidden shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300">
+              
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.original_title}
@@ -71,12 +65,10 @@ const Product = () => {
                   {movie.original_title}
                 </h2>
                 
-                <Link to={`detail/${movie.id}`} className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-md text-sm font-medium transition-all duration-300" 
-                >
+                <Link to={`detail/${movie.id}`} className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-md text-sm font-medium transition-all duration-300" >
                   <PlayCircle className="w-4 h-4" /> Watch Now 
-                 
                 </Link>
-                <Outlet/>
+                {/* <Outlet/> */}
                 
               </div>
             </div>

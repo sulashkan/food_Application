@@ -47,7 +47,6 @@ function Auth() {
         setIsLogin(!isLogin);
         navigate("/user");
       } catch (err) {
-        alert("User Already exist");
         setIsLogin(!isLogin);
         throw new Error(err);
       }
@@ -87,7 +86,7 @@ function Auth() {
     }
     
      localStorage.setItem("user" , JSON.stringify(formData));
-    setFormData({ password: "", email: "" });
+      setFormData({ password: "", email: "" });
   };
 
   const handleChange = (e) => {
@@ -105,8 +104,7 @@ function Auth() {
 
         <form
           onSubmit={(e) => e.preventDefault()}
-          className="flex flex-col gap-4"
-        >
+          className="flex flex-col gap-4">
           <input
             type="text"
             name="email"
