@@ -15,7 +15,6 @@ export function validator (email,password){
 
     if (!passwordRegex.test(password)) {
        return { message:"Password must be 8 characters"}
-
     }
 
     return null

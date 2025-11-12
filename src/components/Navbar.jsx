@@ -18,12 +18,12 @@ export const Navbar = () => {
       }`}
     >
       <div className="flex justify-between items-center px-10 py-4">
-        {/* Brand */}
+  
         <h1 className="text-2xl font-bold text-blue-500 tracking-wide">
           MyApp+
         </h1>
 
-        {/* Navigation Links */}
+     
         <div className="flex gap-10 text-sm font-medium">
           <Link
             to="/home"
@@ -45,9 +45,7 @@ export const Navbar = () => {
           </Link>
         </div>
 
-        {/* Theme Toggle Button */}
-        
-        {/* Profile + Logout */}
+       
        
         <div className="flex items-center gap-6">
           <button
