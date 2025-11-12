@@ -79,9 +79,11 @@ const appRouter = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <PrivateRoute>
-      <Admin />
-    </PrivateRoute>,
+    element: (
+      <PrivateRoute>
+        <Admin />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "profile",

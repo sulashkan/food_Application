@@ -12,8 +12,8 @@ const Admin = ({ logout }) => {
       <div className="flex  bg-blue-300 min-h-130 ">
         <div className="w-[20%]  bg-red-300">
           <Sidebar />
-        </div>
-        <Outlet />
+          </div>
+         <Outlet />
       </div>
       <Footer />
     </div>

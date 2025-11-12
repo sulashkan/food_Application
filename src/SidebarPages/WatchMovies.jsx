@@ -7,17 +7,18 @@ export const WatchMovies = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
+  console.log(id);
 
-  const url = `https://api.themoviedb.org/3/movie/${id}/trailers?api_key=b3d99167c1c907117790447669e1a214&language=en-US&`;
+  const url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=b3d99167c1c907117790447669e1a214&language=en-US&`;
 
-  // const { data, loading, page, totalPage, setPage } = useFetch(url, { method: "GET" });
   useEffect(() => {
     const fetchData = async () => {
       setLoading(!loading);
       try {
         const response = await fetch(url, { method: "GET" });
         const output = await response.json();
-        setData(output.youtube);
+        console.log("output" , output);
+        setData(output?.results);
       } catch (err) {
         throw new Error(err);
       }
@@ -27,14 +28,14 @@ export const WatchMovies = () => {
     fetchData();
   }, [id]);
 
-  if (loading === true)
+  if (loading)
     return (
       <div className="font-bold text-4xl justify-center items-center h-full w-full">
         Loading...
       </div>
     );
 
-
+ console.log("data" , data)
   if (data.length === 0) {
     return <div>No trailers found</div>;
   }

@@ -51,7 +51,9 @@ const Product = () => {
 
       <div className="grid gap-7 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4">
 
-        {data.length === 0 ? (<div className="text-white w-full h-full  justify-center items-center">Movie Not Found</div>) : (data.map((movie, index) => (
+        {data.length === 0 ? (<div className="text-white w-full h-full  justify-center items-center">Movie Not Found</div>)
+         : 
+         (data.map((movie, index) => (
             <div key={index} className=" relative w-[200px] h-[300px] group bg-[#0a1b4d] rounded-2xl overflow-hidden shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300">
               
               <img

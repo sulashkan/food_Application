@@ -8,14 +8,14 @@ const MoviesDetail = () => {
     const [data , setData] = useState({})
     const navigate = useNavigate();
     const {id} = useParams();
-    let url = `https://api.themoviedb.org/3/movie/${id}?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`
+    // let url = `https://api.themoviedb.org/3/movie/${id}?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`
    
 
     useEffect( () => {
         setLoading(!loading);
        const fetchData = async () => {
          try{
-          const response = await fetch(url , {method : 'GET'});
+          const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${import.meta.env.VITE_API_KEY}&language=en-US` , {method : 'GET'});
           const data = await response.json();
           setData(data);
           setLoading(!loading);
