@@ -17,7 +17,6 @@ export const WatchMovies = () => {
       try {
         const response = await fetch(url, { method: "GET" });
         const output = await response.json();
-        console.log("output" , output);
         setData(output?.results);
       } catch (err) {
         throw new Error(err);
@@ -35,7 +34,7 @@ export const WatchMovies = () => {
       </div>
     );
 
- console.log("data" , data)
+ 
   if (data.length === 0) {
     return <div>No trailers found</div>;
   }
