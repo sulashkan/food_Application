@@ -9,7 +9,7 @@ import React from "react";
     const [theme , setTheme] = useState('dark');
 
     const toggle = () => {
-        setTheme( (prev) =>  prev === 'dark' ?  'light' : 'dark')
+        setTheme( prev =>  prev === 'dark' ?  'light' : 'dark')
     }
 
     const themeValues = {
@@ -23,6 +23,3 @@ import React from "react";
         </ThemeContext.Provider>
     )
 }
-
-// export default ThemeProvider;
-// export default ThemeContext;

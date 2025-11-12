@@ -26,7 +26,7 @@ const useFetch = (url, options) => {
       }
     };
     fetchData();
-  }, [url]);
+  }, [url,page]);
  
   return { data, loading, page, totalPage, setPage, setTotalPage };
 };

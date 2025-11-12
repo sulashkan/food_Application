@@ -33,7 +33,6 @@ const appRouter = createBrowserRouter([
     children: [
       {
         index: true,
-        //  path:"/user",
         element: <Product />,
       },
       {
@@ -80,7 +79,11 @@ const appRouter = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <Admin />,
+    element: (
+      <PrivateRoute>
+        <Admin />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "profile",
